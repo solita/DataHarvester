@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/btn_voice_record.xml" value="0.152" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.16" />
+        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/ic_exit.xml" value="0.197" />
+        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/input_field.xml" value="0.201" />
+        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/rectangle.xml" value="0.201" />
+        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/labels.xml" value="0.33" />
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/recording_button.xml" value="0.19166666666666668" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2318840579710145" />
       </map>
