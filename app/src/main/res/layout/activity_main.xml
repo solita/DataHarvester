@@ -6,13 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/main_blue" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="181dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="200dp"
+        android:text="@string/data_harvester"
+        android:textColor="#FF343C44"
+        android:textSize="24sp" />
+
     <ImageButton
         android:id="@+id/btn_record"
         android:layout_width="195dp"
         android:layout_height="188dp"
         android:layout_centerInParent="true"
         android:background="@drawable/btn_voice_record"
-        android:src="@drawable/ic_recording_microphone" />
+        android:src="@drawable/ic_microphone" />
 
 
 </RelativeLayout>
