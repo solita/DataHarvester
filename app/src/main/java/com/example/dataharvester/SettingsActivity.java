@@ -1,44 +1,26 @@
 package com.example.dataharvester;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-    ImageButton btnRecord;
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.settings);
 
         //creating toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        btnRecord = (ImageButton) findViewById(R.id.btn_record);
-
-        btnRecord.setOnClickListener (new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Toast.makeText(MainActivity.this, "Recording on.", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    /*
-     * Methods for app menu (Sara)
-     */
 
     //Menu creation
     @Override
