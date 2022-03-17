@@ -22,6 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="Settings">
+        </activity>
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="History">
+        </activity>
     </application>
 
 </manifest>
