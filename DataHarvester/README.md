@@ -1,0 +1,1 @@
+Read instruction how to use GIT from this Word file: https://tuni-my.sharepoint.com/:w:/r/personal/mikko_t_laine_tuni_fi/_layouts/15/Doc.aspx?sourcedoc=%7BE18B7FA8-32CC-48F8-87E7-68221CC2A0BE%7D&file=Asiakirja.docx&action=default&mobileredirect=true
