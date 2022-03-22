@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.dataharvester">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,6 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LabelsActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="Labels">
+    </activity>
         <activity
             android:name=".SettingsActivity"
             android:exported="true"
@@ -34,6 +41,10 @@
             android:parentActivityName=".MainActivity"
             android:label="History">
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -26,6 +26,11 @@ public class LabelsActivity extends AppCompatActivity {
     EditText EditText2;
     EditText EditText3;
     EditText EditText4;
+    String text1;
+    String text2;
+    String text3;
+    String text4;
+
     int size;
     private RecyclerView audioList;
     private File[] allFiles;
@@ -44,7 +49,7 @@ public class LabelsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.labels);
-
+        Intent intent = getIntent();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -57,20 +62,31 @@ public class LabelsActivity extends AppCompatActivity {
         EditText2 = (EditText) findViewById(R.id.editText);
         EditText3 = (EditText) findViewById(R.id.editText2);
         EditText4 = (EditText) findViewById(R.id.editText3);
+
         //takes up to last 4 files from the directory where Files are, and shows current labels
         //that can be edited
         if (size == 1) {
+            text1 = allFiles[size - 1].getName();
             EditText1.setText(allFiles[size - 1].getName());
         } else if (size == 2) {
+            text1= allFiles[size - 2].getName();
+            text2 = allFiles[size - 1].getName();
             EditText1.setText(allFiles[size - 2].getName());
             EditText2.setText(allFiles[size - 1].getName());
         } else if (size == 3) {
+            text1= allFiles[size - 3].getName();
+            text2 = allFiles[size - 2].getName();
+            text3 = allFiles[size - 1].getName();
             EditText1.setText(allFiles[size - 3].getName());
             EditText2.setText(allFiles[size - 2].getName());
             EditText3.setText(allFiles[size - 1].getName());
         } else if (size >= 4) {
+            text1 = allFiles[size - 4].getName();
+            text2 = allFiles[size - 3].getName();
+            text3 = allFiles[size - 2].getName();
+            text4 = allFiles[size - 1].getName();
             EditText1.setText(allFiles[size - 4].getName());
-            EditText2.setText(allFiles[size - 4].getName());
+            EditText2.setText(allFiles[size - 3].getName());
             EditText3.setText(allFiles[size - 2].getName());
             EditText4.setText(allFiles[size - 1].getName());
         }
@@ -87,27 +103,46 @@ public class LabelsActivity extends AppCompatActivity {
         File directory = new File(path);
         size = allFiles.length;
         if (size == 1) {
-            changeName(directory, allFiles[size-1].getName(), EditText1.getText());
+            if(!text1.equals(EditText1.getText().toString())) {
+                changeName(directory, allFiles[size-1].getName(), EditText1.getText());
+            }
         } else if (size == 2) {
-            changeName(directory, allFiles[size-2].getName(), EditText1.getText());
-            changeName(directory, allFiles[size-1].getName(), EditText2.getText());
+            if(!text1.equals(EditText1.getText().toString())) {
+                changeName(directory, allFiles[size-2].getName(), EditText1.getText());
+            }
+            if(!text2.equals(EditText2.getText().toString())) {
+                changeName(directory, allFiles[size-1].getName(), EditText2.getText());
+            }
         } else if (size == 3) {
-            changeName(directory, allFiles[size-3].getName(), EditText1.getText());
-            changeName(directory, allFiles[size-2].getName(), EditText2.getText());
-            changeName(directory, allFiles[size-1].getName(), EditText3.getText());
+            if(!text1.equals(EditText1.getText().toString())) {
+                changeName(directory, allFiles[size-3].getName(), EditText1.getText());
+            }
+            if(!text2.equals(EditText2.getText().toString())) {
+                changeName(directory, allFiles[size-2].getName(), EditText2.getText());
+            }
+            if(!text3.equals(EditText3.getText().toString())) {
+                changeName(directory, allFiles[size-1].getName(), EditText3.getText());
+            }
         } else if (size >= 4) {
-            changeName(directory, allFiles[size-4].getName(), EditText1.getText());
-            changeName(directory, allFiles[size-3].getName(), EditText2.getText());
-            changeName(directory, allFiles[size-2].getName(), EditText3.getText());
-            changeName(directory, allFiles[size-1].getName(), EditText4.getText());
+            if(!text1.equals(EditText1.getText().toString())) {
+                changeName(directory, allFiles[size-4].getName(), EditText1.getText());
+            }
+            if(!text2.equals(EditText2.getText().toString())) {
+                changeName(directory, allFiles[size-3].getName(), EditText2.getText());
+            }
+            if(!text3.equals(EditText3.getText().toString())) {
+                changeName(directory, allFiles[size-2].getName(), EditText3.getText());
+            }
+            if(!text4.equals(EditText4.getText().toString())) {
+                changeName(directory, allFiles[size-1].getName(), EditText4.getText());
+            }
         }
-            EditText1.getText().clear();
-            EditText2.getText().clear();
-            EditText3.getText().clear();
-            EditText4.getText().clear();
+        Intent intent = (new Intent(LabelsActivity.this, MainActivity.class));
+        LabelsActivity.this.startActivity(intent);
     }
 
     public void cacnelLabels(View view) {
+        /*
         EditText1.getText().clear();
         EditText2.getText().clear();
         EditText3.getText().clear();
@@ -128,6 +163,10 @@ public class LabelsActivity extends AppCompatActivity {
             EditText3.setText(allFiles[size - 2].getName());
             EditText4.setText(allFiles[size - 1].getName());
         }
+        */
+
+        Intent intent = (new Intent(LabelsActivity.this, MainActivity.class));
+        LabelsActivity.this.startActivity(intent);
     }
 
 }
