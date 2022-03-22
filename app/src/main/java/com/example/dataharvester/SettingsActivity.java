@@ -4,12 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    static int position = 0;
+
+    private String recordtype;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -19,6 +29,15 @@ public class SettingsActivity extends AppCompatActivity {
         //creating toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this,
+                R.array.recordTypes, android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(this);
+        spinner.setSelection(position);
+
     }
 
 
@@ -34,8 +53,8 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch(item.getItemId()){
             case R.id.home:
-                //TODO: add functionality: return to app home screen
-                break;
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
             case R.id.history:
                 startActivity(new Intent(this, HistoryActivity.class));
                 return true;
@@ -48,4 +67,17 @@ public class SettingsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        recordtype = adapterView.getItemAtPosition(i).toString();
+        MainActivity.recordType = recordtype;
+        position = i;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
 }
