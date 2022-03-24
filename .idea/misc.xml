@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/drawable/ic_analysis_bar.xml" value="0.118" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/analysis.xml" value="0.33" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/help_info.xml" value="0.25" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/settings.xml" value="0.33" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/menu/main_menu.xml" value="0.1" />
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/btn_voice_record.xml" value="0.152" />
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/ic_exit.xml" value="0.197" />
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/input_field.xml" value="0.201" />
