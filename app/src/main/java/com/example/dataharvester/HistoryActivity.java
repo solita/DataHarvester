@@ -72,7 +72,10 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
         switch(item.getItemId()){
             case R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
-                return true;
+                break;
+            case R.id.analysis:
+                startActivity(new Intent(this, AnalysisActivity.class));
+                break;
             case R.id.history:
                 startActivity(new Intent(this, HistoryActivity.class));
                 return true;
@@ -80,7 +83,7 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.help_info:
-                //TODO: add functionality: open app help and information
+                startActivity(new Intent(this, InfoActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
