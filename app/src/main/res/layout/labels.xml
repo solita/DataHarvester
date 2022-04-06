@@ -21,7 +21,7 @@
         android:layout_width="181dp"
         android:layout_height="30dp"
         android:text="@string/data_harvester"
-        android:textColor="#FF343C44"
+        android:textColor="@color/light_blue"
         android:textSize="24sp"
         tools:ignore="MissingConstraints" />
 
@@ -49,7 +49,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Labels"
-        android:textColor="#FF343C44"
         android:textSize="24sp"
         tools:layout_editor_absoluteX="175dp"
         tools:layout_editor_absoluteY="85dp"
@@ -92,30 +91,30 @@
 
     <ImageButton
         android:id="@+id/btn_exit"
-        android:layout_width="41dp"
-        android:layout_height="38dp"
+        android:layout_width="52dp"
+        android:layout_height="48dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/ic_exit"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="610dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="599dp" />
 
     <ImageButton
         android:id="@+id/check"
-        android:layout_width="83dp"
-        android:layout_height="78dp"
+        android:layout_width="62dp"
+        android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:background="@drawable/ic_check_mark"
         android:clipToOutline="true"
-        tools:layout_editor_absoluteX="287dp"
-        tools:layout_editor_absoluteY="581dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="299dp"
+        tools:layout_editor_absoluteY="587dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

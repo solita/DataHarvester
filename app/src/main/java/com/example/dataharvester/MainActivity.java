@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Set up a record button
         btnRecord = (ImageButton) findViewById(R.id.btn_record);
 
         btnRecord.setOnClickListener (new View.OnClickListener() {
