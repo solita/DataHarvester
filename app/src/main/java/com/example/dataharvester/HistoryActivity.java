@@ -1,26 +1,15 @@
 package com.example.dataharvester;
 
 import android.content.Intent;
-import android.media.AudioFormat;
-import android.media.AudioTrack;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.io.File;
 
@@ -32,6 +21,7 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
     private AudioListAdapter audioListAdapter;
 
     private File fileToPlay = null;
+    public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
 
 
     @Override
@@ -45,16 +35,16 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
 
         audioList = (RecyclerView) findViewById(R.id.audio_list_view);
 
-
         String path = this.getExternalFilesDir("/").getAbsolutePath();
         File directory = new File(path);
         allFiles = directory.listFiles();
 
-        audioListAdapter = new AudioListAdapter(allFiles, this);
+        audioListAdapter = new AudioListAdapter(allFiles, this, this);
 
         audioList.setHasFixedSize(true);
         audioList.setLayoutManager(new LinearLayoutManager(this));
         audioList.setAdapter(audioListAdapter);
+
 
     }
 
@@ -72,10 +62,7 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
         switch(item.getItemId()){
             case R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
-                break;
-            case R.id.analysis:
-                startActivity(new Intent(this, AnalysisActivity.class));
-                break;
+                return true;
             case R.id.history:
                 startActivity(new Intent(this, HistoryActivity.class));
                 return true;
@@ -83,7 +70,7 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.help_info:
-                startActivity(new Intent(this, InfoActivity.class));
+                //TODO: add functionality: open app help and information
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -96,6 +83,9 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
 
     @Override
     public void onClickListener(File file, int position) {
-        fileToPlay = file;
+
+        //fileToPlay = file;
+        //System.out.println(position);
+        //fileToPlay.delete();
     }
 }

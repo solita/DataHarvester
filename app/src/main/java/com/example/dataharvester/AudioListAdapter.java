@@ -1,5 +1,6 @@
 package com.example.dataharvester;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
+import java.util.List;
 
 public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.AudioViewHolder> {
 
@@ -18,9 +20,17 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
 
     private onItemListClick onItemListClick;
 
-    public AudioListAdapter(File[] allFiles, onItemListClick onItemListClick) {
+    private AudioListAdapter audioListAdapter;
+    private List<String> items;
+
+    private Context context;
+    public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
+
+
+    public AudioListAdapter(File[] allFiles, onItemListClick onItemListClick, Context context) {
         this.allFiles = allFiles;
         this.onItemListClick = onItemListClick;
+        this.context = context;
     }
 
     @NonNull
@@ -28,6 +38,7 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
     public AudioViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_list_item, parent, false);
         timeAgo = new com.example.dataharvester.TimeAgo();
+        databaseHelper = new DatabaseHelper(context);
         return new AudioViewHolder(view);
     }
 
@@ -48,6 +59,7 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
         private TextView list_title;
         private TextView list_date;
 
+
         public AudioViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -55,7 +67,26 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             list_title = itemView.findViewById(R.id.list_title);
             list_date = itemView.findViewById(R.id.list_date);
 
+
             itemView.setOnClickListener(this);
+
+            itemView.findViewById(R.id.delete_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                //System.out.println(position);
+                File[] copyArray = new File[allFiles.length - 1];
+                System.arraycopy(allFiles, 0, copyArray, 0, position);
+                System.arraycopy(allFiles, position + 1, copyArray,
+                        position, allFiles.length - position - 1);
+
+                databaseHelper.deleteRecording(databaseHelper.getID(allFiles[position].getName()));
+
+                allFiles[position].delete();
+                allFiles = copyArray;
+                notifyItemRemoved(position);
+
+            });
+
+
         }
 
         @Override

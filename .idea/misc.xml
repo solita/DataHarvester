@@ -3,24 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/drawable/ic_analysis_bar.xml" value="0.118" />
-        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/analysis.xml" value="0.33" />
-        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/help_info.xml" value="0.25" />
-        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/settings.xml" value="0.33" />
-        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/menu/main_menu.xml" value="0.1" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/btn_voice_record.xml" value="0.152" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/ic_exit.xml" value="0.197" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/input_field.xml" value="0.201" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/rectangle.xml" value="0.201" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/slider.xml" value="0.307" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/yearbutton.xml" value="0.307" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/history.xml" value="0.25" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/labels.xml" value="0.25" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/recording_button.xml" value="0.19166666666666668" />
-        <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/settings.xml" value="0.3104166666666667" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2318840579710145" />
+        <entry key="..\:/Users/oskar/Desktop/Labels Branch/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/oskar/Desktop/Labels Branch/proj-s2022-g11-data-harvester/app/src/main/res/layout/analysis.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/oskar/Desktop/Labels Branch/proj-s2022-g11-data-harvester/app/src/main/res/layout/help_info.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/oskar/Desktop/Labels Branch/proj-s2022-g11-data-harvester/app/src/main/res/layout/history.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/oskar/Desktop/Labels Branch/proj-s2022-g11-data-harvester/app/src/main/res/layout/single_list_item.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester-main/app/src/main/res/layout/history.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester-main/app/src/main/res/layout/single_list_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester-main/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.102" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester-main/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.102" />
       </map>
     </option>
   </component>
