@@ -4,32 +4,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!--TODO: add destinations and icons for menu items (Sara)-->
-    <item
-        android:id="@+id/home"
-        android:orderInCategory="1"
-        android:title="Homescreen"
-        android:icon="@drawable/ic_homescreen"
-        app:showAsAction="never">
+    <item android:title="Main Menu"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_hamburger_menu">
+        <menu>
+            <item
+                android:id="@+id/home"
+                android:orderInCategory="1"
+                android:title="Homescreen"
+                android:icon="@drawable/ic_homescreen"
+                app:showAsAction="never">
+            </item>
+            <item
+                android:id="@+id/history"
+                android:orderInCategory="2"
+                android:title="History"
+                android:icon="@drawable/ic_history"
+                app:showAsAction="never">
+            </item>
+            <item
+                android:id="@+id/settings"
+                android:orderInCategory="3"
+                android:title="Settings"
+                android:icon="@drawable/ic_settings"
+                app:showAsAction="never">
+            </item>
+            <item
+                android:id="@+id/help_info"
+                android:orderInCategory="4"
+                android:title="Help and Information"
+                app:showAsAction="never">
+            </item>
+        </menu>
     </item>
-    <item
-        android:id="@+id/history"
-        android:orderInCategory="2"
-        android:title="History"
-        android:icon="@drawable/ic_history"
-        app:showAsAction="never">
-    </item>
-    <item
-        android:id="@+id/settings"
-        android:orderInCategory="3"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings"
-        app:showAsAction="never">
-    </item>
-    <item
-        android:id="@+id/help_info"
-        android:orderInCategory="4"
-        android:title="Help and Information"
-        app:showAsAction="never">
-    </item>
+
 
 </menu>
