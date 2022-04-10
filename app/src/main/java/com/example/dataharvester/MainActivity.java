@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -59,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
     private String recordFile;
 
+    //settings
+    static boolean keepLocalFiles;
+    static String apiUrl;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //button for saving audio
         btnRecord = (ImageButton) findViewById(R.id.btn_record);
-
         btnRecord.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -91,10 +96,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void stopRecording() {
-
         audioRecord.stop();
         audioRecord.release();
         audioRecord = null;
@@ -106,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         String recordPath = this.getExternalFilesDir("/").getAbsolutePath();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss", Locale.CANADA);
         Date now = new Date();
-
 
         recordFile = "Recording" + formatter.format(now) + ".wav";
 
