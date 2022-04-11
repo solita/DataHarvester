@@ -33,6 +33,7 @@
                 android:id="@+id/help_info"
                 android:orderInCategory="4"
                 android:title="Help and Information"
+                android:icon="@drawable/ic_baseline_info_24"
                 app:showAsAction="never">
             </item>
         </menu>
