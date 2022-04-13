@@ -89,32 +89,26 @@
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="442dp" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_exit"
-        android:layout_width="52dp"
-        android:layout_height="48dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/ic_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_transparent"
+        android:text="Cancel"
+        android:textColor="@color/red"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="61dp"
         tools:layout_editor_absoluteY="599dp" />
 
-    <ImageButton
+    <Button
         android:id="@+id/check"
-        android:layout_width="62dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/ic_check_mark"
-        android:clipToOutline="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:background="@color/other_blue"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="299dp"
-        tools:layout_editor_absoluteY="587dp" />
+        tools:layout_editor_absoluteX="258dp"
+        tools:layout_editor_absoluteY="599dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

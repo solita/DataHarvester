@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--TODO: add destinations and icons for menu items (Sara)-->
     <item android:title="Main Menu"
         app:showAsAction="always"
         android:icon="@drawable/ic_hamburger_menu">
