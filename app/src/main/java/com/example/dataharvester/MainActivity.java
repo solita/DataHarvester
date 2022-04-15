@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //button for saving audio
+        // Set up a record button
         btnRecord = (ImageButton) findViewById(R.id.btn_record);
 
         databaseHelper = new DatabaseHelper(this);

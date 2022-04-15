@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.DataHarvester" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/light_blue</item>
+        <item name="colorPrimary">@color/main_blue</item>
         <item name="colorPrimaryVariant">@color/other_blue</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
@@ -12,5 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColorPrimary">@color/light_blue</item>
+        <item name="android:textColorSecondary">@color/other_blue</item>
+        <item name="android:textColor">@color/light_blue</item>
     </style>
 </resources>
