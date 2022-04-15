@@ -7,7 +7,6 @@
     <string name="oguz_issi">Oguzhan Burak Issi</string>
     
     <string name="data_harvester">Data Harvester</string>
-    <string name="placeholder_text">under construction</string>
 
     <!-- string values for settings (Sara) -->
     <string name="apiurl_change_label">Change API URL:</string>
@@ -19,4 +18,5 @@
     <string name="current_api_url_value">Currently using: %1$s</string>
 
 
+    
 </resources>

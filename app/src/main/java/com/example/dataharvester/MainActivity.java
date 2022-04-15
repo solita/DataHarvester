@@ -1,14 +1,7 @@
 package com.example.dataharvester;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -16,14 +9,16 @@ import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,9 +30,10 @@ import java.util.Date;
 import java.util.Locale;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
+	public static final String EXTRA_MESSAGE = "name";
+	public static final String DATABASE_NAME = "database";
     // for raw audio, use MediaRecorder.AudioSource.UNPROCESSED, see note in MediaRecorder section
     static final int AUDIO_SOURCE = MediaRecorder.AudioSource.MIC;
     static final int SAMPLE_RATE = 44100;
@@ -59,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
     private int PERMISSION_CODE = 21;
 
     private String recordFile;
+    private String recordPath;
+
+    public static DatabaseHelper databaseHelper;
 
     //settings
     static boolean keepLocalFiles;
@@ -76,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
         //button for saving audio
         btnRecord = (ImageButton) findViewById(R.id.btn_record);
+
+        databaseHelper = new DatabaseHelper(this);
+        //System.out.println(databaseHelper.getSize());
+        //System.out.println(databaseHelper.getNames());
         btnRecord.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -83,8 +86,11 @@ public class MainActivity extends AppCompatActivity {
                     // Stop Recording
                     isRecording = false;
                     stopRecording();
-                    Toast.makeText(MainActivity.this, "Recording stopped.", Toast.LENGTH_SHORT).show();
+
+
                     Intent intent = (new Intent(MainActivity.this, LabelsActivity.class));
+                    Bundle extras = new Bundle();
+                    intent.putExtra(EXTRA_MESSAGE,recordFile);
                     MainActivity.this.startActivity(intent);
                 } else {
                     // Start Recording
@@ -104,25 +110,28 @@ public class MainActivity extends AppCompatActivity {
         audioRecord.release();
         audioRecord = null;
         recordingThread = null;
+
+        databaseHelper.addRecording(recordFile, recordPath, "");
+
+        Toast.makeText(MainActivity.this, "Recording stopped.", Toast.LENGTH_SHORT).show();
     }
 
     private void startRecording() {
 
-        String recordPath = this.getExternalFilesDir("/").getAbsolutePath();
+        recordPath = this.getExternalFilesDir("/").getAbsolutePath();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss", Locale.CANADA);
         Date now = new Date();
 
-        recordFile = "Recording" + formatter.format(now) + ".wav";
+
+        recordFile =formatter.format(now) + ".wav";
 
         String AudioName = recordPath + "/" + "Recording" + formatter.format(now) + ".pcm";
         String NewAudioName = recordPath + "/" + formatter.format(now)  + ".wav";
 
         Toast.makeText(this,"recordType is" + recordType, Toast.LENGTH_SHORT).show();
 
-        Log.d("PLAY LOG","recordType is " + recordType);
-
         setAudioRecord();
-        Log.d("PLAY LOG","test");
+
         recordingThread = new Thread(new Runnable() {
             public void run() {
                 writeAudioDataToFile(AudioName);
@@ -134,23 +143,19 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("MissingPermission")
     private void setAudioRecord() {
-        Log.d("PLAY LOG",recordType);
+
         if(recordType.equals("Mono")) {
-            Log.d("PLAY LOG","Mono");
             channels = 1;
             CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO;
         }
         if(recordType.equals("Stereo")) {
-            Log.d("PLAY LOG","Stereoxxx");
             channels = 2;
             CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_STEREO;
         }
 
-        Log.d("PLAY LOG",CHANNEL_CONFIG + " " + channels);
 
         BUFFER_SIZE_RECORDING = AudioRecord.getMinBufferSize(SAMPLE_RATE, CHANNEL_CONFIG, AUDIO_FORMAT);
 
-        Log.d("PLAY LOG",AUDIO_SOURCE + " " + SAMPLE_RATE + " " + CHANNEL_CONFIG+ " " + AUDIO_FORMAT + " " + BUFFER_SIZE_RECORDING);
 
         audioRecord = new AudioRecord(AUDIO_SOURCE, SAMPLE_RATE, CHANNEL_CONFIG, AUDIO_FORMAT, BUFFER_SIZE_RECORDING);
         audioRecord.startRecording();
@@ -297,15 +302,11 @@ public class MainActivity extends AppCompatActivity {
         if (isRecording) {
             isRecording = false;
             stopRecording();
-            Toast.makeText(MainActivity.this, "Recording stopped.", Toast.LENGTH_SHORT).show();
         }
 
         switch(item.getItemId()){
             case R.id.home:
-                startActivity(new Intent(this, MainActivity.class));
-                break;
-            case R.id.analysis:
-                startActivity(new Intent(this, AnalysisActivity.class));
+                //TODO: add functionality: return to app home screen
                 break;
             case R.id.history:
                 startActivity(new Intent(this, HistoryActivity.class));
@@ -314,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.help_info:
-                startActivity(new Intent(this, InfoActivity.class));
+                //TODO: add functionality: open app help and information
                 break;
         }
 

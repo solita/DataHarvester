@@ -114,17 +114,14 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         switch(item.getItemId()){
             case R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
-                break;
-            case R.id.analysis:
-                startActivity(new Intent(this, AnalysisActivity.class));
-                break;
+                return true;
             case R.id.history:
                 startActivity(new Intent(this, HistoryActivity.class));
                 return true;
             case R.id.settings:
                 return true;
             case R.id.help_info:
-                startActivity(new Intent(this, InfoActivity.class));
+                //TODO: add functionality: open app help and information
                 break;
         }
         return super.onOptionsItemSelected(item);
