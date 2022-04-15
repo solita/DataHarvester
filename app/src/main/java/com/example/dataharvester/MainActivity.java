@@ -3,6 +3,7 @@ package com.example.dataharvester;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -58,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static DatabaseHelper databaseHelper;
 
+    //settings
+    static boolean keepLocalFiles;
+    static String apiUrl;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //button for saving audio
         btnRecord = (ImageButton) findViewById(R.id.btn_record);
 
         databaseHelper = new DatabaseHelper(this);
@@ -96,10 +102,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     private void stopRecording() {
-
         audioRecord.stop();
         audioRecord.release();
         audioRecord = null;

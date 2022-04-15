@@ -8,6 +8,15 @@
     
     <string name="data_harvester">Data Harvester</string>
 
+    <!-- string values for settings (Sara) -->
+    <string name="apiurl_change_label">Change API URL:</string>
+    <string name="apiurl_hint">Input new URL</string>
+    <string name="apiurl_button">save</string>
+    <string name="keep_files_label">Keep files after upload?</string>
+    <string name="keep_local_yes">Yes</string>
+    <string name="keep_local_no">No</string>
+    <string name="current_api_url_value">Currently using: %1$s</string>
+
 
     
 </resources>
