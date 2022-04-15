@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +40,7 @@ public class InfoActivity extends AppCompatActivity {
             case R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.analysis:
+            case R.id.Analysis:
                 startActivity(new Intent(this, AnalysisActivity.class));
                 break;
             case R.id.history:

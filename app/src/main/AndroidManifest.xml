@@ -41,7 +41,18 @@
             android:parentActivityName=".MainActivity"
             android:label="History">
         </activity>
-
+        <activity
+            android:name=".InfoActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="Help and Info">
+        </activity>
+        <activity
+            android:name=".AnalysisActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="Analysis">
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

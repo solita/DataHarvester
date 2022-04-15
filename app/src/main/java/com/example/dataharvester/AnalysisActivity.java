@@ -41,7 +41,7 @@ public class AnalysisActivity extends AppCompatActivity {
             case R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.analysis:
+            case R.id.Analysis:
                 startActivity(new Intent(this, AnalysisActivity.class));
                 break;
             case R.id.history:
