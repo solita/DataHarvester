@@ -53,6 +53,7 @@
             android:parentActivityName=".MainActivity"
             android:label="Analysis">
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

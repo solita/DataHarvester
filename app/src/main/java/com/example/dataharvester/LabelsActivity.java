@@ -26,9 +26,11 @@ public class LabelsActivity extends AppCompatActivity {
     String text4;
     String fileName;
 
+
     int size;
     private RecyclerView audioList;
     private File[] allFiles;
+    private boolean editing;
 
 
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;

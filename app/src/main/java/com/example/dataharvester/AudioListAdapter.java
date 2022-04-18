@@ -1,6 +1,8 @@
 package com.example.dataharvester;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import java.io.File;
 import java.util.List;
 
 public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.AudioViewHolder> {
-
+    public static final String EXTRA_MESSAGE = "name";
     private File[] allFiles;
     private com.example.dataharvester.TimeAgo timeAgo;
 
@@ -77,6 +79,8 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
 
 
             itemView.setOnClickListener(this);
+
+
 
             itemView.findViewById(R.id.delete_btn).setOnClickListener(view -> {
                 int position = getAdapterPosition();

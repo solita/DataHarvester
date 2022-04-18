@@ -22,7 +22,7 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
 
     private File fileToPlay = null;
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
-
+    public static final String EXTRA_MESSAGE = "name";
 
     @Override
     public void onCreate(Bundle savedInstanceState){
