@@ -33,10 +33,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/open_sans"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/list_image_view"
         app:layout_constraintStart_toEndOf="@+id/list_image_view" />
+
+    <TextView
+        android:id="@+id/labels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/open_sans"
+        android:text="labels"
+        app:layout_constraintStart_toEndOf="@+id/list_image_view"
+        tools:layout_editor_absoluteY="59dp" />
 
     <ImageButton
         android:id="@+id/delete_btn"
