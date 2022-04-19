@@ -96,7 +96,7 @@ public class LabelsActivity extends AppCompatActivity {
         finish();
     }
 
-    public void cacnelLabels(View view) {
+    public void cacnellabels(View view) {
 
         Intent intent = (new Intent(LabelsActivity.this, MainActivity.class));
         LabelsActivity.this.startActivity(intent);

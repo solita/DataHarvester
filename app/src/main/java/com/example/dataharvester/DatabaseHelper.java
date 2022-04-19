@@ -7,6 +7,8 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.json.JSONArray;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,20 +19,28 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_RECORDING = "recordings";
     private static final String TABLE_LABEL = "labels";
+    private static final String TABLE_JSON = "jsons";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_RECORDING_NAME = "name";
     private static final String COLUMN_RECORDING_PATH = "path";
     private static final String COLUMN_LABEL_NAME = "name";
+    private static final String COLUMN_JSON = "json";
+    private static final String COLUMN_UPLOADED = "uploaded";
+
+
+
 
 
     private static final String CREATE_TABLE_RECORDING = "CREATE TABLE "
             + TABLE_RECORDING + "(" + COLUMN_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_RECORDING_NAME + " TEXT,"
-            + COLUMN_RECORDING_PATH + " TEXT);";
+            + COLUMN_RECORDING_PATH + " TEXT," + COLUMN_UPLOADED + "BIT);";
 
     private static final String CREATE_TABLE_LABEL = "CREATE TABLE "
             + TABLE_LABEL + "(" + COLUMN_ID + " INTEGER,"+ COLUMN_RECORDING_NAME + " TEXT );";
 
+    private static final String CREATE_TABLE_JSONS = "CREATE TABLE " + TABLE_JSON + "("
+            + COLUMN_ID + "INTEGER," + COLUMN_JSON + " LONGTEXT );";
 
 
     public DatabaseHelper(Context context) {
@@ -42,6 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_RECORDING);
         sqLiteDatabase.execSQL(CREATE_TABLE_LABEL);
+        sqLiteDatabase.execSQL(CREATE_TABLE_JSONS);
 
     }
 
@@ -49,6 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + TABLE_RECORDING + "'");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + TABLE_LABEL + "'");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + TABLE_JSON + "'");
         onCreate(sqLiteDatabase);
 
     }
@@ -58,6 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         ContentValues valuesRecording = new ContentValues();
         valuesRecording.put(COLUMN_RECORDING_NAME, name);
         valuesRecording.put(COLUMN_RECORDING_PATH, path);
+        valuesRecording.put(COLUMN_UPLOADED,0);
         long id = sqLiteDatabase.insertWithOnConflict(TABLE_RECORDING, null,
                 valuesRecording, SQLiteDatabase.CONFLICT_IGNORE);
 
@@ -69,10 +82,17 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
          */
 
     }
+    public void addJSON(String json, int id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_ID, id);
+        values.put(COLUMN_JSON,json);
+        sqLiteDatabase.insert(TABLE_JSON,null,values);
+    }
 
     public void addLabels(String label, int id){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-        ContentValues valuesRecording = new ContentValues();
 
         ContentValues valuesLabel = new ContentValues();
         valuesLabel.put(COLUMN_ID, id);
@@ -107,12 +127,30 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         return labels;
     }
 
+    //change value of Uploaded bit from 0 (false) to 1 (true)
+    public void addUpload(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_UPLOADED,1);
+
+        db.update(TABLE_RECORDING,values,COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+    }
+
+    //returns 1 if uploaded, 0 if not
+    public int isUploaded(int id){
+        int temp = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues valuesRecording = new ContentValues();
+        Cursor c = db.rawQuery("SELECT uploaded FROM recordings WHERE id = ?", new String[] {Integer.toString(id)});;
+        if (c.moveToFirst()) {
+            temp = Integer.parseInt(c.getString(0));
+        }
+        c.close();
+        return temp;
+    }
+
     public void updateLabels(int id, String label){
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues valuesRecording = new ContentValues();
-
-        valuesRecording.put(COLUMN_ID, id);
-        valuesRecording.put(COLUMN_LABEL_NAME, label);
 
         ContentValues valuesHobby = new ContentValues();
         valuesHobby.put(COLUMN_LABEL_NAME, label);
@@ -129,12 +167,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         valuesRecording.put(COLUMN_RECORDING_PATH, path);
         db.update(TABLE_RECORDING, valuesRecording, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
 
-
-        ContentValues valuesHobby = new ContentValues();
-        valuesHobby.put(COLUMN_LABEL_NAME, label);
-        db.update(TABLE_LABEL, valuesHobby, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
-
     }
+
     public long getLabelsSize() {
         SQLiteDatabase db = this.getReadableDatabase();
         long count = DatabaseUtils.queryNumEntries(db,TABLE_LABEL);
