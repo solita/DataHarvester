@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/oskar/Documents/Tuni/SplashScreen/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/oskar/Documents/Tuni/SplashScreen/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main2.xml" value="0.264" />
-        <entry key="..\:/Users/oskar/Documents/Tuni/SplashScreen/proj-s2022-g11-data-harvester/app/src/main/res/layout/splash_activity.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/Editlabels.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/analysis.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/history.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/labels.xml" value="0.14351851851851852" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/single_list_item.xml" value="0.536" />
+        <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/menu/main_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/btn_border.xml" value="0.2285" />
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/btn_transparent.xml" value="0.2285" />
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/drawable/btn_voice_record.xml" value="0.152" />

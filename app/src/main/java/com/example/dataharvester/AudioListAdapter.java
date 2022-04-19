@@ -1,6 +1,8 @@
 package com.example.dataharvester;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import java.io.File;
 import java.util.List;
 
 public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.AudioViewHolder> {
-
+    public static final String EXTRA_MESSAGE = "name";
     private File[] allFiles;
     private com.example.dataharvester.TimeAgo timeAgo;
 
@@ -46,6 +48,12 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
     public void onBindViewHolder(@NonNull AudioViewHolder holder, int position) {
         holder.list_title.setText(allFiles[position].getName());
         holder.list_date.setText(timeAgo.getTimeAgo(allFiles[position].lastModified()));
+        List<String> all_labels = databaseHelper.getLabels(databaseHelper.getID(allFiles[position].getName()));
+        String labels_string ="";
+        for (String label : all_labels) {
+            labels_string = labels_string + " " + label;
+        }
+        holder.labels.setText(labels_string);
     }
 
     @Override
@@ -58,6 +66,7 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
         private ImageView list_image;
         private TextView list_title;
         private TextView list_date;
+        private TextView labels;
 
 
         public AudioViewHolder(@NonNull View itemView) {
@@ -66,9 +75,12 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             list_image = itemView.findViewById(R.id.list_image_view);
             list_title = itemView.findViewById(R.id.list_title);
             list_date = itemView.findViewById(R.id.list_date);
+            labels = itemView.findViewById(R.id.labels);
 
 
             itemView.setOnClickListener(this);
+
+
 
             itemView.findViewById(R.id.delete_btn).setOnClickListener(view -> {
                 int position = getAdapterPosition();
