@@ -47,7 +47,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_RECORDING);
