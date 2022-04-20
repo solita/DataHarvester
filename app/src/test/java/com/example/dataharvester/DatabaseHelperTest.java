@@ -33,6 +33,7 @@ public class DatabaseHelperTest{
     public void finish() {
         database.close();
     }
+
     @Test
     public void getSize() {
         assertEquals(2,database.getSize());
