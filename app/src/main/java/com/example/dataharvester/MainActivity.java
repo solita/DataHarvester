@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         btnRecord = (ImageButton) findViewById(R.id.btn_record);
 
         databaseHelper = new DatabaseHelper(this);
-        //System.out.println(databaseHelper.getSize());
+
+        System.out.println(databaseHelper.getSize());
         //System.out.println(databaseHelper.getNames());
         btnRecord.setOnClickListener (new View.OnClickListener() {
             @Override

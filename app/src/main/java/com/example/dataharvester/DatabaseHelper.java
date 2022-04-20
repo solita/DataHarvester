@@ -27,14 +27,10 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
     private static final String COLUMN_JSON = "json";
     private static final String COLUMN_UPLOADED = "uploaded";
 
-
-
-
-
     private static final String CREATE_TABLE_RECORDING = "CREATE TABLE "
             + TABLE_RECORDING + "(" + COLUMN_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_RECORDING_NAME + " TEXT,"
-            + COLUMN_RECORDING_PATH + " TEXT," + COLUMN_UPLOADED + "BIT);";
+            + COLUMN_RECORDING_PATH + " TEXT," + COLUMN_UPLOADED + " BIT);";
 
     private static final String CREATE_TABLE_LABEL = "CREATE TABLE "
             + TABLE_LABEL + "(" + COLUMN_ID + " INTEGER,"+ COLUMN_RECORDING_NAME + " TEXT );";
@@ -70,8 +66,13 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         valuesRecording.put(COLUMN_RECORDING_NAME, name);
         valuesRecording.put(COLUMN_RECORDING_PATH, path);
         valuesRecording.put(COLUMN_UPLOADED,0);
+        sqLiteDatabase.insert(TABLE_RECORDING,null,valuesRecording);
+
+        /*
         long id = sqLiteDatabase.insertWithOnConflict(TABLE_RECORDING, null,
                 valuesRecording, SQLiteDatabase.CONFLICT_IGNORE);
+        */
+
 
         /*
         ContentValues valuesLabel = new ContentValues();
