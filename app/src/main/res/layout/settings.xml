@@ -14,37 +14,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="159dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:ignore="MissingConstraints" />
-
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/audiotype_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Audio"
-        android:textColor="#FF343C44"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="38dp"
-        android:layout_height="43dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="56dp"
+        android:text="Audio type"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/ic_audio" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <Switch
+        android:id="@+id/audiotype_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="%1$s"
+        android:textOn="Stereo"
+        android:textOff="Mono"
+        android:showText="false"
+        android:checked="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/audiotype_label" />
 
     <TextView
         android:id="@+id/apiurl_label"
@@ -55,7 +48,7 @@
         android:text="Change API URL"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/audiotype_switch" />
 
     <EditText
         android:id="@+id/apiurl_value"
@@ -72,11 +65,12 @@
 
     <TextView
         android:id="@+id/current_apiurl"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="@string/current_api_url_value"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apiurl_value" />
 
@@ -84,11 +78,11 @@
         android:id="@+id/apiurl_button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apiurl_value" />
+        app:layout_constraintStart_toEndOf="@+id/apiurl_button_default"
+        app:layout_constraintTop_toBottomOf="@+id/current_apiurl" />
 
     <TextView
         android:id="@+id/localfiles_label"
@@ -109,9 +103,19 @@
         android:layout_marginTop="16dp"
         android:textOn="On"
         android:textOff="Off"
-        android:showText="true"
+        android:showText="false"
         android:checked="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/localfiles_label" />
+
+    <Button
+        android:id="@+id/apiurl_button_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_apiurl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
