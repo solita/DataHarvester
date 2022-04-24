@@ -16,7 +16,38 @@
     <string name="keep_local_yes">Yes</string>
     <string name="keep_local_no">No</string>
     <string name="current_api_url_value">Currently using: %1$s</string>
+    <string name="default_api_url_value">https://racekernel.com/dataharvester/</string>
 
+    <!-- string values for analysis results -->
+    <string name="analysis_file_label">File:</string>
+    <string name="analysis_filename_value">name: %1$s</string>
+    <string name="analysis_filetype_value">type: %1$s</string>
+    <string name="analysis_tempname_value">temporary name: %1$s</string>
+    <string name="analysis_file_error">error: %1$d</string>
+    <string name="analysis_file_size">size: %1$d</string>
 
-    
+    <string name="analysis_header_label">Header:</string>
+    <string name="analysis_labels_label">Labels:</string>
+    <string name="analysis_labels_values">%1$s</string>
+
+    <string name="analysis_chunk1_label">Subchunk 1</string>
+    <string name="analysis_chunk1_id">id: %1$s</string>
+    <string name="analysis_chunk1_size">size: %1$d</string>
+    <string name="analysis_audio_format">audio format: %1$d</string>
+    <string name="analysis_numchannels">number of channels: %1$d</string>
+    <string name="analysis_samplerate">sample rate: %1$d</string>
+    <string name="analysis_byterate">byte rate: %1$d</string>
+    <string name="analysis_blockalign">block align: %1$d</string>
+    <string name="analysis_bps">bits per sample: %1$d</string>
+    <string name="analysis_extraparamsize">extra parameter size: %1$d</string>
+    <string name="analysis_extra_params">extra parameters: %1$s</string>
+
+    <string name="analysis_chunk2_label">Subchunk 2</string>
+    <string name="analysis_chunk2_id">id: %1$s</string>
+    <string name="analysis_chunk2_size">size: %1$d</string>
+    <string name="analysis_chunk2_data">data: %1$s</string>
+    <string name="analysis_chunk_id">chunk id: %1$s</string>
+    <string name="analysis_chunk_size">chunk size: %1$d</string>
+    <string name="analysis_format">format: %1$s</string>
+
 </resources>

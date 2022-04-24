@@ -35,6 +35,12 @@
                 android:icon="@drawable/ic_baseline_info_24"
                 app:showAsAction="never">
             </item>
+            <item
+                android:id="@+id/analysis"
+                android:orderInCategory="5"
+                android:title="Analysis"
+                app:showAsAction="never">
+            </item>
         </menu>
     </item>
 

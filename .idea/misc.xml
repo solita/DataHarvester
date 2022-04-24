@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main2.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/analysis.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/history.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/settings.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/babas/Desktop/opinnot/COMPCS610/proj-s2022-g11-data-harvester/app/src/main/res/layout/single_list_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/Editlabels.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/oskar/Documents/Tuni/OskariBranch/proj-s2022-g11-data-harvester/app/src/main/res/layout/analysis.xml" value="0.36666666666666664" />
@@ -34,5 +39,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.358695652173913" />
+      </ProjectState>
+    </option>
   </component>
 </project>
