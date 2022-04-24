@@ -104,36 +104,40 @@
         app:layout_constraintTop_toBottomOf="@+id/editText2"
         tools:ignore="MissingConstraints" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_exit"
-        android:layout_width="41dp"
-        android:layout_height="38dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="11dp"
-        android:background="@drawable/ic_exit"
-        android:onClick="cacnelLabels"
+        android:background="@drawable/btn_transparent"
+        android:text="Cancel"
+        android:textColor="@color/red"
+        android:onClick="cancelLabels"
         app:layout_constraintBottom_toBottomOf="@+id/rectangle_6"
         app:layout_constraintStart_toStartOf="@+id/rectangle_6"
         tools:ignore="MissingConstraints" />
 
-    <ImageButton
+
+    <Button
         android:id="@+id/check"
-        android:layout_width="83dp"
-        android:layout_height="78dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/ic_check_mark"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="11dp"
+        android:text="Submit"
         android:clipToOutline="true"
         android:onClick="submitLabels"
         app:layout_constraintBottom_toBottomOf="@+id/rectangle_6"
         app:layout_constraintEnd_toEndOf="@+id/rectangle_6"
         tools:ignore="MissingConstraints" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
