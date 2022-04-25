@@ -31,6 +31,11 @@
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/layout/settings.xml" value="0.3104166666666667" />
         <entry key="..\:/proj-s2022-g11-data-harvester/app/src/main/res/menu/main_menu.xml" value="0.3578125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2318840579710145" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/analysis.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/help_info.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/history.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/labels.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/settings.xml" value="0.15520833333333334" />
       </map>
     </option>

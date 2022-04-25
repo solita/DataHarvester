@@ -37,6 +37,9 @@ public class SettingsActivityTest {
 
     @Test
     public void test_textsAreCorrect(){
+
+        ActivityScenario.launch(SettingsActivity.class);
+
         onView(withId(R.id.audiotype_label)).check(matches(withText("Audio type")));
         onView(withId(R.id.apiurl_label)).check(matches(withText("Change API URL")));
         onView(withId(R.id.localfiles_label)).check(matches(withText("Keep local files after upload")));
