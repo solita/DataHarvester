@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-
 public class DatabaseHelperTest{
 
     DatabaseHelper database;
@@ -27,6 +26,8 @@ public class DatabaseHelperTest{
     public void init(){
         database.addRecording("first","firstPath","");
         database.addRecording("second","secondPath","");
+        database.addLabels("Label1",1);
+        database.addLabels("Label2",1);
     }
 
     @After
@@ -38,4 +39,45 @@ public class DatabaseHelperTest{
     public void getSize() {
         assertEquals(2,database.getSize());
     }
+
+    @Test
+    public void addAndGetSize(){
+        database.addRecording("third","thirdPath","");
+         assertEquals(3,database.getSize());
+    }
+
+    @Test
+    public void delete(){
+        database.deleteRecording(database.getID("first"));
+        assertEquals(1,database.getSize());
+    }
+
+    @Test
+    public void addLabels(){
+        database.addLabels("Label1",2);
+        assertEquals(3,database.getLabelsSize());
+        assertEquals("Label1", database.getLabels(2).get(0));
+    }
+
+    @Test
+    public void getIDbyName() {
+        assertEquals(1,database.getID("first"));
+    }
+
+
+    @Test
+    public void upload(){
+        assertEquals(0,database.isUploaded(0));
+        database.addUpload(1);
+        assertEquals(1,database.isUploaded(1));
+    }
+
+    @Test
+    public void AddJSON(){
+        database.addJSON("JSON_1",1);
+        assertEquals("JSON_1",database.getJSON(1));
+    }
+
+
+
 }

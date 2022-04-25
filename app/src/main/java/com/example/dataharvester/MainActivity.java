@@ -78,8 +78,6 @@ public class MainActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
 
-        System.out.println(databaseHelper.getSize());
-        //System.out.println(databaseHelper.getNames());
         btnRecord.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view){
