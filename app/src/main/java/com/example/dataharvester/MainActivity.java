@@ -315,6 +315,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.settings:
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
+            case R.id.analysis:
+                startActivity(new Intent(this, AnalysisActivity.class));
+                return true;
             case R.id.help_info:
                 //TODO: add functionality: open app help and information
                 break;

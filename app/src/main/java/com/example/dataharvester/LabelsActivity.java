@@ -96,7 +96,7 @@ public class LabelsActivity extends AppCompatActivity {
         finish();
     }
 
-    public void cacnellabels(View view) {
+    public void cancelLabels(View view) {
 
         Intent intent = (new Intent(LabelsActivity.this, MainActivity.class));
         LabelsActivity.this.startActivity(intent);
