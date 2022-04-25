@@ -74,9 +74,11 @@ public class DatabaseHelperTest{
 
     @Test
     public void AddJSON(){
-        database.addJSON("JSON_1",1);
-        assertEquals("JSON_1",database.getJSON(1));
+        String JSON_1 = "{“filename”:{“name”:“StarWars3.wav”,“type”:“audio\\/wav”,“tmp_name”:“\\/tmp\\/phpN1bvwR”,“error”:0,“size”:132344},“analysis”:{“header”:{“chunkid”:“RIFF”,“chunksize”:132336,“format”:“WAVE”},“subchunk1”:{“id”:“fmt “,”size”:16,“audioformat”:1,“numchannels”:1,“samplerate”:22050,“byterate”:44100,“blockalign”:2,“bitspersample”:16,“extraparamsize”:0,“extraparams”:null},“subchunk2”:{“id”:“data”,“size”:132300,“data”:null}}}";
+        database.addJSON(JSON_1,1);
+        assertEquals(JSON_1,database.getJSON(1));
     }
+
 
 
 
