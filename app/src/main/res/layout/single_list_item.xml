@@ -47,14 +47,15 @@
         android:fontFamily="@font/open_sans"
         android:text="labels"
         app:layout_constraintStart_toEndOf="@+id/list_image_view"
-        tools:layout_editor_absoluteY="59dp" />
+        tools:layout_editor_absoluteY="59dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/ic_exit"
         android:padding="18dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,9 +66,19 @@
         android:layout_width="38dp"
         android:layout_height="37dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toStartOf="@+id/delete_btn"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageButton
+        android:id="@+id/btn_upload_analysis"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/ic_file_upload"
+        app:layout_constraintEnd_toStartOf="@+id/edit_btn"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

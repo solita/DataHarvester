@@ -1,9 +1,15 @@
 package com.example.dataharvester;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +18,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
+import java.util.Calendar;
 
 public class HistoryActivity extends AppCompatActivity implements AudioListAdapter.onItemListClick {
+
+    private static final String TAG = "History";
 
     private RecyclerView audioList;
     private File[] allFiles;
@@ -23,6 +32,10 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
     private File fileToPlay = null;
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
     public static final String EXTRA_MESSAGE = "name";
+
+    ImageButton upAnalysis;
+    boolean upload = false;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -44,6 +57,21 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
         audioList.setHasFixedSize(true);
         audioList.setLayoutManager(new LinearLayoutManager(this));
         audioList.setAdapter(audioListAdapter);
+
+        // Set up the Upload/Analysis button.
+        upAnalysis = findViewById(R.id.btn_upload_analysis);
+        upAnalysis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Check if the file is uploaded or not and based on that set the image for the button.
+                if (upload){
+                    upAnalysis.setImageResource(R.drawable.ic_analysis_bar);
+                }
+                else {
+                    upAnalysis.setImageResource(R.drawable.ic_file_upload);
+                }
+            }
+        });
 
 
     }
