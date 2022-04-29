@@ -37,6 +37,8 @@
         <entry key="app/src/main/res/layout/history.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/labels.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/settings.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/single_list_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/splash_activity.xml" value="0.15520833333333334" />
       </map>
     </option>
   </component>

@@ -1,15 +1,13 @@
 package com.example.dataharvester;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.matcher.ViewMatchers.withHint;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
-import org.junit.runner.RunWith;
 
 import org.junit.Test;
 

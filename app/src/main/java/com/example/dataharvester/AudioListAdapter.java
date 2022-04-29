@@ -146,6 +146,16 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                 editDialog.show();
             });
 
+            // TODO: check if the file has been uploaded and analysed and pick the correct button
+            itemView.findViewById(R.id.upload_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+
+                    });
+
+            itemView.findViewById(R.id.analysis_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+
+            });
 
             /*File file = new File("");
 
