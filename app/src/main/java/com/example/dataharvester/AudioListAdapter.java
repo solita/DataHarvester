@@ -1,13 +1,19 @@
 package com.example.dataharvester;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -97,6 +103,90 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                 notifyItemRemoved(position);
 
             });
+
+
+            itemView.findViewById(R.id.edit_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                File editFile = allFiles[position];
+                AlertDialog.Builder editDialog = new AlertDialog.Builder(context);
+                editDialog.setTitle("Rename");
+
+                final EditText editName = new EditText(context);
+                editName.setInputType(InputType.TYPE_CLASS_TEXT);
+                editName.setText(editFile.getName());
+                editDialog.setView(editName);
+
+                editDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String newName = editName.getText().toString();
+                        if (!newName.isEmpty()) {
+                            String path = context.getExternalFilesDir("/").getAbsolutePath();
+                            File directory = new File(path);
+                            File newFile = new File(directory, newName + ".wav");
+                            editFile.renameTo(newFile);
+                            list_title.setText(newName + ".wav");
+
+
+                            //System.out.println(editFile.getName());
+                        }
+                        else {
+                            Toast.makeText(context, "File name cannot be empty", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                });
+
+                editDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+                editDialog.show();
+            });
+
+            // TODO: check if the file has been uploaded and analysed and pick the correct button
+            itemView.findViewById(R.id.upload_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+
+                // After uploading the file, the upload button is not needed so it need to hide.
+                itemView.findViewById(R.id.upload_btn).setVisibility(View.GONE);
+                itemView.findViewById(R.id.analysis_btn).setVisibility(View.VISIBLE);
+
+                    });
+
+            itemView.findViewById(R.id.analysis_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+
+            });
+
+            /*File file = new File("");
+
+            Retrofit retrofit = NetworkClient.getRetrofit();
+
+            RequestBody requestBody = RequestBody.create(MediaType.parse("recording/*"), file);
+            MultipartBody.Part parts = MultipartBody.Part.createFormData("newAudio", file.getName(), requestBody);
+
+            RequestBody recordingData = RequestBody.create(MediaType.parse("text/plain"), "This is a new Image");
+
+            UploadApis uploadApis = retrofit.create(UploadApis.class);
+
+
+            //Call call = uploadApis.uploadAudio(parts, recordingData);
+            retrofit2.Call<RequestBody> call = uploadApis.uploadAudio(parts, recordingData);
+            call.enqueue(new Callback<RequestBody>() {
+                @Override
+                public void onResponse(Call<RequestBody> call, Response<RequestBody> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<RequestBody> call, Throwable t) {
+
+                }
+            });*/
 
 
         }

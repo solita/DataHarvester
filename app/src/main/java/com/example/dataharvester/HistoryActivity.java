@@ -29,12 +29,9 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
 
     private AudioListAdapter audioListAdapter;
 
-    private File fileToPlay = null;
+    private final File fileToPlay = null;
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
     public static final String EXTRA_MESSAGE = "name";
-
-    ImageButton upAnalysis;
-    boolean upload = false;
 
 
     @Override
@@ -43,10 +40,10 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
         setContentView(R.layout.history);
 
         //creating toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        audioList = (RecyclerView) findViewById(R.id.audio_list_view);
+        audioList = findViewById(R.id.audio_list_view);
 
         String path = this.getExternalFilesDir("/").getAbsolutePath();
         File directory = new File(path);
@@ -57,21 +54,6 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
         audioList.setHasFixedSize(true);
         audioList.setLayoutManager(new LinearLayoutManager(this));
         audioList.setAdapter(audioListAdapter);
-
-        // Set up the Upload/Analysis button.
-        upAnalysis = findViewById(R.id.btn_upload_analysis);
-        upAnalysis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Check if the file is uploaded or not and based on that set the image for the button.
-                if (upload){
-                    upAnalysis.setImageResource(R.drawable.ic_analysis_bar);
-                }
-                else {
-                    upAnalysis.setImageResource(R.drawable.ic_file_upload);
-                }
-            }
-        });
 
 
     }
