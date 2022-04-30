@@ -1,9 +1,15 @@
 package com.example.dataharvester;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,17 +18,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.File;
+import java.util.Calendar;
 
 public class HistoryActivity extends AppCompatActivity implements AudioListAdapter.onItemListClick {
+
+    private static final String TAG = "History";
 
     private RecyclerView audioList;
     private File[] allFiles;
 
     private AudioListAdapter audioListAdapter;
 
-    private File fileToPlay = null;
+    private final File fileToPlay = null;
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
     public static final String EXTRA_MESSAGE = "name";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -30,10 +40,10 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
         setContentView(R.layout.history);
 
         //creating toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        audioList = (RecyclerView) findViewById(R.id.audio_list_view);
+        audioList = findViewById(R.id.audio_list_view);
 
         String path = this.getExternalFilesDir("/").getAbsolutePath();
         File directory = new File(path);

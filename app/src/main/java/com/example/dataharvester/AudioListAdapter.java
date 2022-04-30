@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -149,6 +150,10 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             // TODO: check if the file has been uploaded and analysed and pick the correct button
             itemView.findViewById(R.id.upload_btn).setOnClickListener(view -> {
                 int position = getAdapterPosition();
+
+                // After uploading the file, the upload button is not needed so it need to hide.
+                itemView.findViewById(R.id.upload_btn).setVisibility(View.GONE);
+                itemView.findViewById(R.id.analysis_btn).setVisibility(View.VISIBLE);
 
                     });
 
