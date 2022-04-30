@@ -147,33 +147,6 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             });
 
 
-            /*File file = new File("");
-
-            Retrofit retrofit = NetworkClient.getRetrofit();
-
-            RequestBody requestBody = RequestBody.create(MediaType.parse("recording/*"), file);
-            MultipartBody.Part parts = MultipartBody.Part.createFormData("newAudio", file.getName(), requestBody);
-
-            RequestBody recordingData = RequestBody.create(MediaType.parse("text/plain"), "This is a new Image");
-
-            UploadApis uploadApis = retrofit.create(UploadApis.class);
-
-
-            //Call call = uploadApis.uploadAudio(parts, recordingData);
-            retrofit2.Call<RequestBody> call = uploadApis.uploadAudio(parts, recordingData);
-            call.enqueue(new Callback<RequestBody>() {
-                @Override
-                public void onResponse(Call<RequestBody> call, Response<RequestBody> response) {
-
-                }
-
-                @Override
-                public void onFailure(Call<RequestBody> call, Throwable t) {
-
-                }
-            });*/
-
-
         }
 
         @Override

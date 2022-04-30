@@ -5,15 +5,25 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkClient {
-    private static Retrofit retrofit;
-    private static String BASE_URL = "www.abc.com/";
+    private  static final String BASE_URL = "https://racekernel.com/dataharvester/";
+    private static NetworkClient mInstance;
+    private Retrofit retrofit;
 
-    public static Retrofit getRetrofit() {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder().baseUrl(BASE_URL).
-                    addConverterFactory(GsonConverterFactory.create()).client(okHttpClient).build();
+    private NetworkClient() {
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    public static synchronized NetworkClient getInstance() {
+        if (mInstance == null) {
+            mInstance = new NetworkClient();
         }
-        return retrofit;
+        return mInstance;
+    }
+
+    public UploadApis getAPI() {
+        return retrofit.create(UploadApis.class);
     }
 }
