@@ -54,8 +54,6 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
         audioList.setHasFixedSize(true);
         audioList.setLayoutManager(new LinearLayoutManager(this));
         audioList.setAdapter(audioListAdapter);
-
-
     }
 
 

@@ -76,10 +76,9 @@
         android:layout_height="37dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
-        android:visibility="invisible"
-        android:background="@drawable/ic_analysis_bar"
         app:layout_constraintEnd_toStartOf="@+id/edit_btn"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_agenda" />
 
     <ImageButton
         android:id="@+id/upload_btn"
@@ -87,8 +86,8 @@
         android:layout_height="37dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/ic_file_upload"
         app:layout_constraintEnd_toStartOf="@+id/edit_btn"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_upload" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
