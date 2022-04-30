@@ -87,7 +87,7 @@ public class LabelsActivity extends AppCompatActivity {
 
         List<String> texts = new ArrayList<>();
         Collections.addAll(texts,text1,text2,text3,text4);
-        System.out.println(texts.size());
+        
         addLabels(databaseHelper.getID(fileName),texts);
         //System.out.println(databaseHelper.getID(fileName));
         //System.out.println(databaseHelper.getLabels(databaseHelper.getID(fileName)));
