@@ -39,7 +39,8 @@
                 android:id="@+id/analysis"
                 android:orderInCategory="5"
                 android:title="Analysis"
-                app:showAsAction="never">
+                app:showAsAction="never"
+                android:icon="@drawable/ic_analysis_bar">
             </item>
         </menu>
     </item>
