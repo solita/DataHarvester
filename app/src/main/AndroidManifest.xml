@@ -4,6 +4,9 @@
     package="com.example.dataharvester">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
 
     <application
         android:allowBackup="true"
@@ -56,7 +59,12 @@
             android:parentActivityName=".MainActivity"
             android:label="Analysis">
         </activity>
-
+        <activity
+            android:name=".EditLabelsActivity"
+            android:exported="true"
+            android:parentActivityName=".HistoryActivity"
+            android:label="EditLabels">
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

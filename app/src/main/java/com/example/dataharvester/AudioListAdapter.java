@@ -1,19 +1,37 @@
 package com.example.dataharvester;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.AudioViewHolder> {
     public static final String EXTRA_MESSAGE = "name";
@@ -78,7 +96,9 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             labels = itemView.findViewById(R.id.labels);
 
 
+            itemView.findViewById(R.id.analysis_btn).setVisibility(View.GONE);
             itemView.setOnClickListener(this);
+
 
 
 
@@ -97,7 +117,117 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                 notifyItemRemoved(position);
 
             });
+            itemView.findViewById(R.id.edit_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                File editFile = allFiles[position];
 
+                Intent intent = (new Intent(HistoryActivity.audioListAdapter.context, EditLabelsActivity.class));
+                intent.putExtra(EXTRA_MESSAGE,allFiles[position].getName());
+                HistoryActivity.audioListAdapter.context.startActivity(intent);
+
+
+
+
+            });
+            /*
+            itemView.findViewById(R.id.edit_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                File editFile = allFiles[position];
+                AlertDialog.Builder editDialog = new AlertDialog.Builder(context);
+                editDialog.setTitle("Rename");
+
+                final EditText editName = new EditText(context);
+                editName.setInputType(InputType.TYPE_CLASS_TEXT);
+                editName.setText(editFile.getName());
+                editDialog.setView(editName);
+
+                editDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String newName = editName.getText().toString();
+                        if (!newName.isEmpty()) {
+                            String path = context.getExternalFilesDir("/").getAbsolutePath();
+                            File directory = new File(path);
+                            File newFile = new File(directory, newName + ".wav");
+                            editFile.renameTo(newFile);
+                            list_title.setText(newName + ".wav");
+
+
+                            //System.out.println(editFile.getName());
+                        }
+                        else {
+                            Toast.makeText(context, "File name cannot be empty", Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                });
+
+                editDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+                editDialog.show();
+            });
+            */
+            // TODO: check if the file has been uploaded and analysed and pick the correct button
+            itemView.findViewById(R.id.upload_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+
+                File recordingFile = allFiles[position];
+                RequestBody reqBody = RequestBody.create(MediaType.parse("multipart/form-file"), recordingFile);
+                MultipartBody.Part partAudio = MultipartBody.Part.createFormData("filename", recordingFile.getName(), reqBody);
+                UploadApis api = NetworkClient.getInstance().getAPI();
+                Call<ResponseBody> upload = api.uploadFiles(partAudio);
+
+                upload.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                        if(response.isSuccessful()) {
+                            JSONObject jsonObject = null;
+
+                            try {
+
+                                jsonObject = new JSONObject(response.body().string());
+                                String json = jsonObject.toString();
+
+                                int ID = databaseHelper.getID(recordingFile.getName());
+                                databaseHelper.addJSON(json, ID);
+
+                                //System.out.println(response.body().string());
+                                //System.out.println(jsonObject);
+                                //System.out.println(jsonObject.toString());
+                                //System.out.println(jsonObject.getString("filename"));
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            uploadLabel(recordingFile);
+
+                            // After uploading the file, the upload button is not needed so it need to hide.
+                            itemView.findViewById(R.id.upload_btn).setVisibility(View.GONE);
+                            itemView.findViewById(R.id.analysis_btn).setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        Toast.makeText(context, "Upload failed", Toast.LENGTH_SHORT).show();
+                        System.out.println("failure");
+                    }
+                });
+            });
+
+            itemView.findViewById(R.id.analysis_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+
+            });
 
         }
 
@@ -105,6 +235,41 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
         public void onClick(View view) {
             onItemListClick.onClickListener(allFiles[getAdapterPosition()], getAdapterPosition());
         }
+    }
+
+    private void uploadLabel(File file) {
+
+        String fileName = file.getName();
+        List<String>  labelList = databaseHelper.getLabels(databaseHelper.getID(fileName));
+        String allLabel = "";
+        for(int i = 0; i < labelList.size(); ++i) {
+            allLabel += labelList.get(i);
+
+            if (i < labelList.size() - 1) {
+                allLabel += ",";
+            }
+        }
+        System.out.println(allLabel);
+
+        UploadApis api = NetworkClient.getInstance().getAPI();
+        Call<ResponseBody> upload = api.uploadLabel(fileName, allLabel);
+
+        upload.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful()) {
+                    Toast.makeText(context, "Upload succeed", Toast.LENGTH_SHORT).show();
+                    System.out.println("label uploaded");
+                    //System.out.println(response.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Upload failed", Toast.LENGTH_SHORT).show();
+                System.out.println("failure");
+            }
+        });
     }
 
     public interface onItemListClick {

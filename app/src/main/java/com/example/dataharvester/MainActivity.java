@@ -2,6 +2,8 @@ package com.example.dataharvester;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -12,7 +14,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,11 +31,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<Button> extends AppCompatActivity {
 
 	public static final String EXTRA_MESSAGE = "name";
 	public static final String DATABASE_NAME = "database";
@@ -77,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
         btnRecord = (ImageButton) findViewById(R.id.btn_record);
 
         databaseHelper = new DatabaseHelper(this);
-        //System.out.println(databaseHelper.getSize());
-        //System.out.println(databaseHelper.getNames());
+
         btnRecord.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -314,6 +319,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.settings:
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
+            case R.id.analysis:
+                startActivity(new Intent(this, AnalysisActivity.class));
+                return true;
             case R.id.help_info:
                 //TODO: add functionality: open app help and information
                 break;
@@ -321,4 +329,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -40,7 +40,7 @@ public class InfoActivity extends AppCompatActivity {
             case R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.Analysis:
+            case R.id.analysis:
                 startActivity(new Intent(this, AnalysisActivity.class));
                 break;
             case R.id.history:
