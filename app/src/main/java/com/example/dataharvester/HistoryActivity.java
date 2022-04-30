@@ -8,6 +8,7 @@ import android.util.JsonReader;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import android.util.Log;
@@ -67,7 +68,6 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
     public static final String EXTRA_MESSAGE = "name";
 
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -106,7 +106,6 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
                 startActivity(new Intent(this, MainActivity.class));
                 return true;
             case R.id.history:
-                startActivity(new Intent(this, HistoryActivity.class));
                 return true;
             case R.id.settings:
                 startActivity(new Intent(this, SettingsActivity.class));

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,7 +26,25 @@ public class AnalysisActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        displayResults("{\"filename\":{\"name\":\"StarWars3.wav\",\"type\":\"audio\\/wav\",\"tmp_name\":\"\\/tmp\\/phpN1bvwR\",\"error\":0,\"size\":132344},\"analysis\":{\"header\":{\"chunkid\":\"RIFF\",\"chunksize\":132336,\"format\":\"WAVE\"},\"subchunk1\":{\"id\":\"fmt \",\"size\":16,\"audioformat\":1,\"numchannels\":1,\"samplerate\":22050,\"byterate\":44100,\"blockalign\":2,\"bitspersample\":16,\"extraparamsize\":0,\"extraparams\":null},\"subchunk2\":{\"id\":\"data\",\"size\":132300,\"data\":null}}}");
+        //file id, which file's results to display
+        int id = -1;
+        Bundle params = getIntent().getExtras();
+        if(params != null){
+            id = params.getInt("id");
+        }
+
+        //get corresponding JSON from database
+        DatabaseHelper db = MainActivity.databaseHelper;
+        String json = "";
+        if(id != -1){
+            //if valid id
+            json = db.getJSON(id);
+            displayResults(json);
+        }
+        else{
+            //this is just for testing purposes
+            displayResults("{\"filename\":{\"name\":\"StarWars3.wav\",\"type\":\"audio\\/wav\",\"tmp_name\":\"\\/tmp\\/phpN1bvwR\",\"error\":0,\"size\":132344},\"analysis\":{\"header\":{\"chunkid\":\"RIFF\",\"chunksize\":132336,\"format\":\"WAVE\"},\"subchunk1\":{\"id\":\"fmt \",\"size\":16,\"audioformat\":1,\"numchannels\":1,\"samplerate\":22050,\"byterate\":44100,\"blockalign\":2,\"bitspersample\":16,\"extraparamsize\":0,\"extraparams\":null},\"subchunk2\":{\"id\":\"data\",\"size\":132300,\"data\":null}},\"labels\": [\"label1\", \"label2\"]}");
+        }
     }
 
     /*
@@ -139,6 +158,17 @@ public class AnalysisActivity extends AppCompatActivity {
             id2View.setText(getString(R.string.analysis_chunk2_id, subSubObj.getString("id")));
             size2View.setText(getString(R.string.analysis_chunk2_size, subSubObj.getInt("size")));
             dataView.setText(getString(R.string.analysis_chunk2_data, subSubObj.getString("data")));
+
+            //labels
+            JSONArray labelsArray = obj.getJSONArray("labels");
+            String labelsString = "";
+            for(int i = 0; i<labelsArray.length(); i++){
+                labelsString += labelsArray.get(i).toString();
+                if(i<labelsArray.length()-1){
+                    labelsString += ", ";
+                }
+            }
+            labelsView.setText(labelsString);
         }
         catch(JSONException e){
             Log.d("Error!", e.toString());
