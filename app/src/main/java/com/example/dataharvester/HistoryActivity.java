@@ -61,7 +61,7 @@ public class HistoryActivity extends AppCompatActivity implements AudioListAdapt
     private RecyclerView audioList;
     private File[] allFiles;
 
-    private AudioListAdapter audioListAdapter;
+    public static AudioListAdapter audioListAdapter;
 
     private final File fileToPlay = null;
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;

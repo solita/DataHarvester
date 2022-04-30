@@ -117,8 +117,19 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                 notifyItemRemoved(position);
 
             });
+            itemView.findViewById(R.id.edit_btn).setOnClickListener(view -> {
+                int position = getAdapterPosition();
+                File editFile = allFiles[position];
+
+                Intent intent = (new Intent(HistoryActivity.audioListAdapter.context, EditLabelsActivity.class));
+                intent.putExtra(EXTRA_MESSAGE,allFiles[position].getName());
+                HistoryActivity.audioListAdapter.context.startActivity(intent);
 
 
+
+
+            });
+            /*
             itemView.findViewById(R.id.edit_btn).setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 File editFile = allFiles[position];
@@ -160,7 +171,7 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
 
                 editDialog.show();
             });
-
+            */
             // TODO: check if the file has been uploaded and analysed and pick the correct button
             itemView.findViewById(R.id.upload_btn).setOnClickListener(view -> {
                 int position = getAdapterPosition();

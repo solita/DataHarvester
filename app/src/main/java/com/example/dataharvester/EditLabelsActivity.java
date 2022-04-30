@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class LabelsActivity extends AppCompatActivity {
+public class EditLabelsActivity extends AppCompatActivity {
     EditText EditText1;
     EditText EditText2;
     EditText EditText3;
@@ -25,12 +25,18 @@ public class LabelsActivity extends AppCompatActivity {
     String text3;
     String text4;
     String fileName;
+    String oldText1;
+    String oldText2;
+    String oldText3;
+    String oldText4;
 
 
     int size;
     private RecyclerView audioList;
     private File[] allFiles;
     private boolean editing;
+
+    private List<String> allLabels;
 
 
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
@@ -64,15 +70,44 @@ public class LabelsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        allLabels = databaseHelper.getLabels(databaseHelper.getID(fileName));
+
         String path = this.getExternalFilesDir("/").getAbsolutePath();
         File directory = new File(path);
         allFiles = directory.listFiles();
-        size = allFiles.length;
+        size = allLabels.size();
 
         EditText1 = (EditText) findViewById(R.id.textInputEditText);
         EditText2 = (EditText) findViewById(R.id.editText);
         EditText3 = (EditText) findViewById(R.id.editText2);
         EditText4 = (EditText) findViewById(R.id.editText3);
+
+        if(size == 1) {
+            EditText1.setText(allLabels.get(0));
+            oldText1 = EditText1.getText().toString();
+        } else  if ( size == 2){
+            EditText1.setText(allLabels.get(0));
+            oldText1 = EditText1.getText().toString();
+            EditText2.setText(allLabels.get(1));
+            oldText2 = EditText2.getText().toString();
+        } else if (size == 3) {
+            EditText1.setText(allLabels.get(0));
+            oldText1 = EditText1.getText().toString();
+            EditText2.setText(allLabels.get(1));
+            oldText2 = EditText2.getText().toString();
+            EditText3.setText(allLabels.get(2));
+            oldText3 = EditText3.getText().toString();
+        } else if (size == 4) {
+            EditText1.setText(allLabels.get(0));
+            oldText1 = EditText1.getText().toString();
+            EditText2.setText(allLabels.get(1));
+            oldText2 = EditText2.getText().toString();
+            EditText3.setText(allLabels.get(2));
+            oldText3 = EditText3.getText().toString();
+            EditText4.setText(allLabels.get(3));
+            oldText4 = EditText4.getText().toString();
+        }
+
     }
 
     /*
@@ -87,19 +122,20 @@ public class LabelsActivity extends AppCompatActivity {
 
         List<String> texts = new ArrayList<>();
         Collections.addAll(texts,text1,text2,text3,text4);
-        
+        databaseHelper.deleteLabel(databaseHelper.getID(fileName));
         addLabels(databaseHelper.getID(fileName),texts);
+
         //System.out.println(databaseHelper.getID(fileName));
         //System.out.println(databaseHelper.getLabels(databaseHelper.getID(fileName)));
-        Intent intent = (new Intent(LabelsActivity.this, MainActivity.class));
-        LabelsActivity.this.startActivity(intent);
+        Intent intent = (new Intent(EditLabelsActivity.this, HistoryActivity.class));
+        EditLabelsActivity.this.startActivity(intent);
         finish();
     }
 
     public void cancelLabels(View view) {
 
-        Intent intent = (new Intent(LabelsActivity.this, MainActivity.class));
-        LabelsActivity.this.startActivity(intent);
+        Intent intent = (new Intent(EditLabelsActivity.this, HistoryActivity.class));
+        EditLabelsActivity.this.startActivity(intent);
         finish();
     }
 

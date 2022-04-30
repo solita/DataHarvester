@@ -168,12 +168,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         return temp;
     }
 
-    public void updateLabels(int id, String label) {
+    public void updateLabels(int id, String newLabel, String oldLabel) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues valuesHobby = new ContentValues();
-        valuesHobby.put(COLUMN_LABEL_NAME, label);
-        db.update(TABLE_LABEL, valuesHobby, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        valuesHobby.put(COLUMN_LABEL_NAME, newLabel);
+        db.update(TABLE_LABEL, valuesHobby, COLUMN_ID + " = ? AND " + COLUMN_LABEL_NAME + " = ?", new String[]{String.valueOf(id),oldLabel});
 
     }
 
@@ -204,6 +204,11 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         //deletes labels for recording
         sqLiteDatabase.delete(TABLE_LABEL, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
 
+
+    }
+    public void deleteLabel(int id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(TABLE_LABEL, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
         sqLiteDatabase.close();
     }
 
