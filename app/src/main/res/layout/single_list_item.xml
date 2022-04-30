@@ -47,7 +47,8 @@
         android:fontFamily="@font/open_sans"
         android:text="labels"
         app:layout_constraintStart_toEndOf="@+id/list_image_view"
-        tools:layout_editor_absoluteY="59dp" />
+        tools:layout_editor_absoluteY="59dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageButton
         android:id="@+id/delete_btn"
