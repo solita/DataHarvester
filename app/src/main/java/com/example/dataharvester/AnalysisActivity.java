@@ -70,8 +70,6 @@ public class AnalysisActivity extends AppCompatActivity {
             case R.id.home:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.analysis:
-                break;
             case R.id.history:
                 startActivity(new Intent(this, HistoryActivity.class));
                 return true;
