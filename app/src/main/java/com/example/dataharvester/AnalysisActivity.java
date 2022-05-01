@@ -28,6 +28,7 @@ public class AnalysisActivity extends AppCompatActivity {
 
         //file id, which file's results to display
         int id = -1;
+        //read parameters, set id as received parameter if parameter isn't null
         Bundle params = getIntent().getExtras();
         if(params != null){
             id = params.getInt("id");
@@ -37,8 +38,11 @@ public class AnalysisActivity extends AppCompatActivity {
         DatabaseHelper db = MainActivity.databaseHelper;
         String json = "";
         if(id != -1){
-            //if valid id
+            //if valid id, get JSON from database
             json = db.getJSON(id);
+            //replace illegal characters in case there are any
+            json.replace("“", "\"");
+            json.replace("”", "\"");
             displayResults(json);
         }
         else{

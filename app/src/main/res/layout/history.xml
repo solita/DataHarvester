@@ -21,22 +21,11 @@
         android:id="@+id/audio_list_view"
         android:layout_width="413dp"
         android:layout_height="674dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <!-- What is this?
-<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:layout_editor_absoluteX="0dp"
         tools:ignore="MissingConstraints" />
-=======
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
->>>>>>> 9a1d7cb7f67c98fa2e5bb01e2827aae4f46de4ea -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

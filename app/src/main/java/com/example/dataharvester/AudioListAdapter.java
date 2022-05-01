@@ -80,10 +80,12 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
     }
 
     public class AudioViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         private ImageView list_image;
         private TextView list_title;
         private TextView list_date;
         private TextView labels;
+
 
         public AudioViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,14 +95,20 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             list_date = itemView.findViewById(R.id.list_date);
             labels = itemView.findViewById(R.id.labels);
 
+
             itemView.findViewById(R.id.analysis_btn).setVisibility(View.GONE);
             itemView.setOnClickListener(this);
+
+
+
+
             itemView.findViewById(R.id.delete_btn).setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 //System.out.println(position);
                 File[] copyArray = new File[allFiles.length - 1];
                 System.arraycopy(allFiles, 0, copyArray, 0, position);
-                System.arraycopy(allFiles, position + 1, copyArray, position, allFiles.length - position - 1);
+                System.arraycopy(allFiles, position + 1, copyArray,
+                        position, allFiles.length - position - 1);
 
                 databaseHelper.deleteRecording(databaseHelper.getID(allFiles[position].getName()));
 
@@ -116,6 +124,9 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                 Intent intent = (new Intent(HistoryActivity.audioListAdapter.context, EditLabelsActivity.class));
                 intent.putExtra(EXTRA_MESSAGE,allFiles[position].getName());
                 HistoryActivity.audioListAdapter.context.startActivity(intent);
+
+
+
 
             });
             /*
@@ -174,7 +185,28 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                 upload.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                         if(response.isSuccessful()) {
+                            JSONObject jsonObject = null;
+
+                            try {
+
+                                jsonObject = new JSONObject(response.body().string());
+                                String json = jsonObject.toString();
+
+                                int ID = databaseHelper.getID(recordingFile.getName());
+                                databaseHelper.addJSON(json, ID);
+
+                                //System.out.println(response.body().string());
+                                //System.out.println(jsonObject);
+                                //System.out.println(jsonObject.toString());
+                                //System.out.println(jsonObject.getString("filename"));
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
 
                             uploadLabel(recordingFile);
 
@@ -194,13 +226,15 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
 
             //listener for analysis button, starts analysis activity with the id of the selected file
             itemView.findViewById(R.id.analysis_btn).setOnClickListener(view -> {
+                //get current file from list of all files
                 File file = allFiles[getAdapterPosition()];
-                Intent showAnalysis = new Intent(HistoryActivity.audioListAdapter.context, AnalysisActivity.class);
-                Bundle params = new Bundle();
+                //get current file id
                 int id = databaseHelper.getID(file.getName());
 
-                params.putInt("id", id);
-                showAnalysis.putExtras(params);
+                Intent showAnalysis = new Intent(HistoryActivity.audioListAdapter.context, AnalysisActivity.class);
+
+                //pass id as parameter
+                showAnalysis.putExtra("id", id);
                 HistoryActivity.audioListAdapter.context.startActivity(showAnalysis);
             });
 
@@ -233,26 +267,6 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(response.isSuccessful()) {
-                    JSONObject jsonObject = null;
-
-                    try {
-                        jsonObject = new JSONObject(response.body().string());
-                        String json = jsonObject.toString();
-
-                        int ID = databaseHelper.getID(fileName);
-                        databaseHelper.addJSON(json, ID);
-
-                        //System.out.println(json);
-                        //System.out.println(response.body().string());
-                        //System.out.println(jsonObject);
-                        //System.out.println(jsonObject.toString());
-                        //System.out.println(jsonObject.getString("filename"));
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                     Toast.makeText(context, "Upload succeed", Toast.LENGTH_SHORT).show();
                     System.out.println("label uploaded");
                     //System.out.println(response.toString());
