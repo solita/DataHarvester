@@ -256,11 +256,13 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                         String json = jsonObject.toString();
 
                         int ID = databaseHelper.getID(fileName);
+                        databaseHelper.deleteJson(ID);
                         databaseHelper.addJSON(json, ID);
 
+                        //System.out.println(databaseHelper.getJSON(ID));
                         //System.out.println(response.body().string());
                         //System.out.println(jsonObject);
-                        //System.out.println(jsonObject.toString());
+                        //System.out.println(json);
                         //System.out.println(jsonObject.getString("filename"));
 
                     } catch (JSONException e) {
