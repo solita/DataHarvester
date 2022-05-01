@@ -36,7 +36,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
             TABLE_LABEL + "(" + COLUMN_ID + " INTEGER,"
             + COLUMN_RECORDING_NAME + " TEXT );";
 
-    private static final String CREATE_TABLE_JSONS = "CREATE TABLE " +
+
+    private static final String CREATE_TABLE_JSON = "CREATE TABLE " +
             TABLE_JSON + "(" + COLUMN_ID + " INTEGER,"
             + COLUMN_JSON + " LONGTEXT );";
 
@@ -49,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_TABLE_RECORDING);
         sqLiteDatabase.execSQL(CREATE_TABLE_LABEL);
-        sqLiteDatabase.execSQL(CREATE_TABLE_JSONS);
+        sqLiteDatabase.execSQL(CREATE_TABLE_JSON);
     }
 
     @Override
