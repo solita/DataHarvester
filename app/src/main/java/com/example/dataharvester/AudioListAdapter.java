@@ -187,26 +187,6 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                         if(response.isSuccessful()) {
-                            JSONObject jsonObject = null;
-
-                            try {
-
-                                jsonObject = new JSONObject(response.body().string());
-                                String json = jsonObject.toString();
-
-                                int ID = databaseHelper.getID(recordingFile.getName());
-                                databaseHelper.addJSON(json, ID);
-
-                                //System.out.println(response.body().string());
-                                //System.out.println(jsonObject);
-                                //System.out.println(jsonObject.toString());
-                                //System.out.println(jsonObject.getString("filename"));
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
 
                             uploadLabel(recordingFile);
 
@@ -267,6 +247,28 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if(response.isSuccessful()) {
+
+                    JSONObject jsonObject = null;
+
+                    try {
+
+                        jsonObject = new JSONObject(response.body().string());
+                        String json = jsonObject.toString();
+
+                        int ID = databaseHelper.getID(fileName);
+                        databaseHelper.addJSON(json, ID);
+
+                        //System.out.println(response.body().string());
+                        //System.out.println(jsonObject);
+                        //System.out.println(jsonObject.toString());
+                        //System.out.println(jsonObject.getString("filename"));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                     Toast.makeText(context, "Upload succeed", Toast.LENGTH_SHORT).show();
                     System.out.println("label uploaded");
                     //System.out.println(response.toString());
