@@ -50,7 +50,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         sqLiteDatabase.execSQL(CREATE_TABLE_RECORDING);
         sqLiteDatabase.execSQL(CREATE_TABLE_LABEL);
         sqLiteDatabase.execSQL(CREATE_TABLE_JSONS);
-
     }
 
     @Override
@@ -59,7 +58,6 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + TABLE_LABEL + "'");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS '" + TABLE_JSON + "'");
         onCreate(sqLiteDatabase);
-
     }
 
     public void addRecording(String name, String path, String label) {
@@ -225,8 +223,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
 
         return labels;
     }
-    //get all lables to list with id
 
+    //get all labels to list with id
     public int getSize() {
         SQLiteDatabase db = this.getReadableDatabase();
         int temp = (int) DatabaseUtils.longForQuery(db, "SELECT count(id) FROM recordings", null);
