@@ -25,6 +25,9 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <!-- What is this?
 <<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:layout_editor_absoluteX="0dp"
@@ -33,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
->>>>>>> 9a1d7cb7f67c98fa2e5bb01e2827aae4f46de4ea
+>>>>>>> 9a1d7cb7f67c98fa2e5bb01e2827aae4f46de4ea -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
