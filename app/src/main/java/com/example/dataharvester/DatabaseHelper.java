@@ -212,6 +212,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         sqLiteDatabase.close();
     }
 
+    public void deleteJson(int id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        sqLiteDatabase.delete(TABLE_JSON, COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        sqLiteDatabase.close();
+    }
+
 
     public List<String> getNames() {
         List<String> labels = new ArrayList<>();

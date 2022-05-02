@@ -54,16 +54,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_format" />
 
-    <TextView
-        android:id="@+id/file_labels_values"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/analysis_labels_values"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/file_labels"
-        app:layout_constraintTop_toBottomOf="@+id/header_format" />
+        <TextView
+            android:id="@+id/file_labels_values"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:text="@string/analysis_labels_values"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/file_labels" />
 
     <TextView
         android:id="@+id/file_chunk1_label"
