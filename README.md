@@ -1,1 +1,7 @@
-Read instruction how to use GIT from this Word file: https://tuni-my.sharepoint.com/:w:/r/personal/mikko_t_laine_tuni_fi/_layouts/15/Doc.aspx?sourcedoc=%7BE18B7FA8-32CC-48F8-87E7-68221CC2A0BE%7D&file=Asiakirja.docx&action=default&mobileredirect=true
+# Data Harvester
+
+This is the source code repository for the software project named Data Harvester,  proposed by Solita  for Software Engineering Project course in Tampere University, to be completed in collaboration with a student group in the Spring 2022 implementation of the course.
+
+The purpose of the project is to create a software solution that runs on Android devices and meets the first set of requirements for an eventual software product which is able to analyse the condition of factory machinery. The idea is to detect changes in audio, predict malfunctions and save costs by minimizing downtimes. The end user would be either a maintenance person or a technician. The environment can be any place where machines are used.
+
+The software will record audio to a file using the internal microphone of the Android device. The user can add metadata to the recordings manually. The audio file then can be uploaded to a preferred backend server which is responsible for analysing the recording and responding the results back to the application. The result of the analysis will be visualised in the mobile application. The user interface should be easy and quick offering a convenient way to collect large amounts of labelled data.
