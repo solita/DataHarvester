@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -46,7 +48,6 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
     private Context context;
     public DatabaseHelper databaseHelper = MainActivity.databaseHelper;
 
-
     public AudioListAdapter(File[] allFiles, onItemListClick onItemListClick, Context context) {
         this.allFiles = allFiles;
         this.onItemListClick = onItemListClick;
@@ -86,6 +87,8 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
         private TextView list_date;
         private TextView labels;
 
+        private MediaPlayer mp;
+
 
         public AudioViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -100,6 +103,13 @@ public class AudioListAdapter extends RecyclerView.Adapter<AudioListAdapter.Audi
             itemView.setOnClickListener(this);
 
 
+            list_image.setOnClickListener( view -> {
+                int position = getAdapterPosition();
+
+                File recordingFile = allFiles[position];
+                mp = MediaPlayer.create(view.getContext(), Uri.fromFile(recordingFile));
+                mp.start();
+            });
 
 
             itemView.findViewById(R.id.delete_btn).setOnClickListener(view -> {
